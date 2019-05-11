@@ -1,0 +1,80 @@
+{% extends "company/base.html" %}
+{% from "macros.html" import render_pagination %}
+
+{% block title %}
+职位管理
+{% endblock %}
+
+{% block right %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>职位</th>
+        <th>类型</th>
+      <th>发布时间</th>
+      <th>更新时间</th>
+      <th>操作</th>
+    </tr>
+    <tbody>
+      {%for job in all_time_jobs %}
+      <tr>
+        <td><a href="{{ url_for('job.detail', job_id=job.id) }}">{{ job.name }}</a></td>
+        <td>全职</td>
+        <td>{{ (job.created_at).strftime("%Y-%m-%d %H:%M:%S") }}</td>
+        <td>{{ (job.created_at).strftime("%Y-%m-%d %H:%M:%S") }}</td>
+        <td>
+            <div class="btn-group" role="group">
+              {% if job.is_enable %}
+              <a href="{{ url_for('job.disable', job_id=job.id) }}" type="button" class="btn btn-default">下线</a>
+              {% else %}
+              <a href="{{ url_for('job.enable', job_id=job.id) }}" type="button" class="btn btn-default">上线</a>
+              {% endif %}
+              <a href="{{ url_for('job.edit', job_id=job.id) }}" type="button" class="btn btn-default">
+                  编辑
+              </a>
+                <a href="{{ url_for('company.job_count', job_id=job.id) }}" type="button" class="btn btn-default">
+                  统计
+              </a>
+              <button type="button" class="btn btn-default dropdown-toggle"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  删除
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="{{ url_for('job.delete', job_id=job.id) }}">确定</a></li>
+              </ul>
+            </div>
+        </td>
+      </tr>
+      {% endfor %}
+
+      {%for job in part_time_jobs %}
+      <tr>
+        <td><a href="{{ url_for('job.detail', job_id=job.id) }}">{{ job.name }}</a></td>
+        <td>兼职</td>
+        <td>{{ (job.created_at).strftime("%Y-%m-%d %H:%M:%S") }}</td>
+        <td>{{ (job.updated_at).strftime("%Y-%m-%d %H:%M:%S") }}</td>
+        <td>
+            <div class="btn-group" role="group">
+              {% if job.is_enable %}
+              <a href="{{ url_for('job.disable', job_id=job.id) }}" type="button" class="btn btn-default">下线</a>
+              {% else %}
+              <a href="{{ url_for('job.enable', job_id=job.id) }}" type="button" class="btn btn-default">上线</a>
+              {% endif %}
+              <a href="{{ url_for('job.edit', job_id=job.id) }}" type="button" class="btn btn-default">
+                  编辑
+              </a>
+              <button type="button" class="btn btn-default dropdown-toggle"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  删除
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="{{ url_for('job.delete', job_id=job.id) }}">确定</a></li>
+              </ul>
+            </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{#{{ render_pagination(pagination, 'company.jobs') }}#}
+{% endblock %}

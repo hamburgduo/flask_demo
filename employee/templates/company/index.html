@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "macros.html" import render_pagination, render_company %}
+
+{% block title %}公司{% endblock %}
+
+
+{% block body %}
+<div class="jumbotron">
+  <h4>对不起，你所搜索的企业不存在，请重新输入关键字</h4>
+</div>
+
+    <div align="center" >
+      <img src="{{ url_for('static', filename='images/no_company.png') }}" width="200">
+      <h3>查无企业</h3>
+    </div>
+
+{% endblock %}

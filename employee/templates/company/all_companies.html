@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "macros.html" import render_company, render_job %}
+
+{% block title %}All Companies{% endblock %}
+{% block body %}
+<ul class="nav nav-tabs list-title" style="margin-top: 50px">
+  <li role="presentation" class="active">
+    <a href="#">所有公司</a>
+  </li>
+</ul>
+
+<div class="company-list">
+  {% for company in companies %}
+    {{ render_company(company) }}
+  {% endfor %}
+</div>
+{% endblock %}

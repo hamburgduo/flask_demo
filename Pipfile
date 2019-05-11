@@ -1,0 +1,33 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+lxml = ">=4.2.0"
+redis = ">=2.10.6"
+requests = ">=2.18.4"
+Faker = ">=0.8.12"
+Flask = ">=0.12.3"
+Flask-CKEditor = ">=0.3.3"
+Flask-Login = ">=0.4.1"
+Flask-Migrate = ">=2.1.1"
+Flask-Moment = ">=0.6.0"
+Flask-SQLAlchemy = ">=2.3.2"
+Flask-Share = ">=0.1.0"
+Flask-Uploads = ">=0.2.1"
+Flask-WTF = ">=0.14.2"
+SQLAlchemy = ">=1.2.5"
+WTForms = ">=2.1"
+Werkzeug = ">=0.14.1"
+flask-admin = "*"
+enum = "*"
+enum34 = "*"
+enum21 = "*"
+flask-babelex = "*"
+python-dotenv = "*"
+
+[requires]
+python_version = "3.7"

@@ -1,0 +1,40 @@
+{% extends "company/base.html" %}
+{% from "macros.html" import render_form %}
+
+{% block title %}
+    统计管理
+{% endblock %}
+
+{% block right %}
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 400px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '热门职位'
+            },
+            tooltip: {},
+            legend: {
+                data: ['简历数量']
+            },
+            xAxis: {
+                //data: ["总简历", "已面试", "未处理", "未通过"]
+                data: {{ job_name_list | tojson}}
+            },
+            yAxis: {},
+            series: [{
+                name: '简历数量',
+                type: 'bar',
+                //data: [30, 20, 10, 3]
+                data: {{ job_count_list | tojson }}
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+{% endblock %}

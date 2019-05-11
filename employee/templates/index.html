@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% from "macros.html" import render_company, render_job %}
+
+{% block title %}主页{% endblock %}
+
+{% block head %}
+<div class="jumbotron">
+  <div class="container">
+    <h1>The Sea Employ</h1>
+    <p>主要技术栈：Python / Flask / Jinja2 / Bootstrap / Jquery / Sqlite </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<ul class="nav nav-tabs list-title">
+  <li role="presentation" class="active">
+    <a href="#">热门全职</a>
+  </li>
+</ul>
+
+<div class="job-list">
+
+
+    {% for job in all_time_jobs %}
+        {{ render_job(job) }}
+    {% endfor %}
+
+</div>
+    <div class="list-more">
+  <a href="{{ url_for('job.all_jobs') }}" class="btn btn-success btn-lg list-more-btn">
+    更多热门全职
+  </a>
+</div>
+
+    <ul class="nav nav-tabs list-title">
+  <li role="presentation" class="active">
+    <a href="#">热门兼职</a>
+  </li>
+</ul>
+
+<div class="job-list">
+
+    {% for job in part_time_jobs %}
+        {{ render_job(job) }}
+    {% endfor %}
+
+</div>
+<div class="list-more">
+  <a href="{{ url_for('job.part_time_jobs') }}" class="btn btn-success btn-lg list-more-btn">
+    更多热门兼职
+  </a>
+</div>
+
+<ul class="nav nav-tabs list-title">
+  <li role="presentation" class="active">
+    <a href="#">热门名企</a>
+  </li>
+</ul>
+
+<div class="company-list">
+  {% for company in companies %}
+    {{ render_company(company) }}
+  {% endfor %}
+</div>
+
+<p class="company-more">
+  <a href="{{ url_for('company.all_companies') }}" class="btn btn-success btn-lg list-more-btn">
+    更多火爆公司
+  </a>
+</p>
+{% endblock %}
