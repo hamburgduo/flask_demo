@@ -20,4 +20,4 @@ app.config["BABEL_DEFAULT_LOCALE"] = "zh_CN"
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0")
