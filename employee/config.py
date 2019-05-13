@@ -14,8 +14,7 @@ class BaseConfig(object):
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
-    #SQLALCHEMY_DATABASE_URI = 'sqlite://///Users/worlder/Documents/Language/employ/employ.db'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///E:/employ/employ.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///%s' % (os.path.join(os.path.abspath(os.getcwd()), "employ.db"))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     FLASK_ADMIN_SWATCH = 'cerulean'
