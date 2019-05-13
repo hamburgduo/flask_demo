@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cd /root
-source venv_employee/bin/activate
-cd /var/lib/jenkins/workspace/employee
+source /root/venv_employee/bin/activate
+
 ps -ef | grep "python manage.py" | grep -v grep | awk '{print $2}' | xargs kill -9
-python manage.py
+
+python /var/lib/jenkins/workspace/employee/manage.py
